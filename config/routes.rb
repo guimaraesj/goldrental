@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   end
   resources :rentals, only: %i[index destroy] do
     resources :reviews, only: %i[new create]
+    # falta validar todas as rotas
   end
 end
