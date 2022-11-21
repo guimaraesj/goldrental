@@ -5,6 +5,20 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Rent.destroy_all
+Product.destroy_all
+User.destroy_all
+
+20.times do
+  new_user = User.new(
+    name: Faker::FunnyName.name_with_initial,
+    description: Faker::Superhero.descriptor,
+    localization: Faker::Address.city,
+    email: Faker::Internet.safe_email,
+    password: rand(654_564_612..987_984_784_894)
+  )
+  new_user.save!
+end
 
 20.times do
   new_product = Product.new(
@@ -21,22 +35,13 @@
 end
 
 20.times do
-  new_user = User.new(
-    name: Faker::FunnyName.name_with_initial,
-    description: Faker::Superhero.descriptor,
-    localization: Faker::Address.city
-  )
-  new_user.save!
-end
-
-20.times do
   new_rent = Rent.new(
     user: User.all.sample,
     product: Product.all.sample,
     duration: Faker::Cannabis.brand,
     total_value: rand(50..1000),
     credit_card: Faker::Finance.credit_card(:mastercard),
-    approval_state: rand(true, false)
+    approval_state: [true, false].sample
   )
   new_rent.save!
 end
