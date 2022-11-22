@@ -9,7 +9,6 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.float :product_price
       t.float :rent_cost
       t.references :user, null: false, foreign_key: true
-
       t.timestamps
     end
   end
