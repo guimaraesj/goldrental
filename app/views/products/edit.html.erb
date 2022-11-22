@@ -1,0 +1,12 @@
+<%= simple_form_for(@product) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :min_rent_duration %>
+  <%= f.input :material %>
+  <%= f.input :rent_cost %>
+  <%= f.input :city %>
+  <%= f.input :state %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Product Updated", product_path %>
