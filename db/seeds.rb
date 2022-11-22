@@ -18,6 +18,7 @@ User.destroy_all
     password: rand(654_564_612..987_984_784_894)
   )
   new_user.save!
+  p "Created succefully"
 end
 
 20.times do
@@ -34,6 +35,7 @@ end
     state: Faker::Address.state
   )
   new_product.save!
+  p "Created succefully"
 end
 
 20.times do
@@ -46,4 +48,5 @@ end
     approval_state: [true, false].sample
   )
   new_rent.save!
+  p "Created succefully"
 end
