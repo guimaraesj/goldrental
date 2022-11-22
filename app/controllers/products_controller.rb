@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
-  before_action :set_product, only: %i[show edit]
+  before_action :set_product, only: %i[show edit update destroy]
   def index
     @products = Product.all
     #link to
@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user = current_user
     if @product.save
-      redirect_to products_path(@product) #ver no rails routes para onde direcionar
+      redirect_to products_path(@product)
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,9 +27,14 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
     @product.update(product_params)
     redirect_to product_path(@product)
+  end
+
+  def destroy
+    #raise
+    @product.destroy
+    redirect_to product_path, status: :see_other
   end
 
   private
