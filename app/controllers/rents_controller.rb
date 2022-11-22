@@ -28,7 +28,6 @@ class RentsController < ApplicationController
     redirect_to rents_path, status: :see_other
   end
 
-
   private
 
   def rent_params
