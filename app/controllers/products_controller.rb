@@ -3,6 +3,18 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
   def index
     @products = Product.all
+
+    ## CODE BELOW IS TO BE IMPLEMENTED to replace above line. Need to change product schema to add these dates.
+    # user_start_date = params[:start_date]
+    # user_end_date = params[:endgit _date]
+
+    # sc_1 = "end_date < ?"
+    # sc_2 = "start_date > ? AND end_date < ?"
+    # sc_3 = "start_date > ?"
+
+    # conflicting_bookings = Rent.where("#{sc_1} OR #{sc_2} OR #{sc_3}, params[user_end_date, user_start_date, user_end_date, user_start_date ]")
+    # occuped_products = conflicting_bookings.map { |rent| rent.product }
+    # @products = Product.all - occuped_products
     #link to
   end
 
