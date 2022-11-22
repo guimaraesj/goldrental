@@ -3,6 +3,21 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit]
   def index
     @products = Product.all
+    #link to
+  end
+
+  def new
+    @product = Product.new
+  end
+
+  def create
+    @product = Product.new(product_params)
+    @product.user = current_user
+    if @product.save
+      redirect_to products_path(@product) #ver no rails routes para onde direcionar
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show

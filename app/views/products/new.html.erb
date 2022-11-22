@@ -1,0 +1,13 @@
+<h1>New Product</h1>
+<%= simple_form_for [@product] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :min_rent_duration %>
+  <%= f.input :weight %>
+  <%= f.input :material %>
+  <%= f.input :product_price %>
+  <%= f.input :rent_cost %>
+  <%= f.input :city %>
+  <%= f.input :state %>
+  <%= f.submit "New product", class: "btn btn-primary" %>
+<% end %>
