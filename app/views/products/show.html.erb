@@ -7,4 +7,4 @@
 <p><%= @product.rent_cost %></p>
 <p><%= @product.city %></p>
 <p><%= @product.state %></p>
-
+<%= link_to "Delete", product_path(@product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
