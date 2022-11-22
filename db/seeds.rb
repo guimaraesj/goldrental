@@ -11,9 +11,9 @@ User.destroy_all
 
 20.times do
   new_user = User.new(
-    name: Faker::FunnyName.name_with_initial,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
     description: Faker::Superhero.descriptor,
-    localization: Faker::Address.city,
     email: Faker::Internet.safe_email,
     password: rand(654_564_612..987_984_784_894)
   )
@@ -29,7 +29,9 @@ end
     material: %w[gold silver platinum].sample,
     product_price: rand(50..10_000),
     rent_cost: rand(50..2000),
-    user: User.all.sample
+    user: User.all.sample,
+    city: Faker::Address.city,
+    state: Faker::Address.state
   )
   new_product.save!
 end
@@ -38,8 +40,8 @@ end
   new_rent = Rent.new(
     user: User.all.sample,
     product: Product.all.sample,
-    duration: Faker::Cannabis.brand,
-    total_value: rand(50..1000),
+    duration: rand(50..1000),
+    total_value: rand(50..10_000),
     credit_card: Faker::Finance.credit_card(:mastercard),
     approval_state: [true, false].sample
   )
