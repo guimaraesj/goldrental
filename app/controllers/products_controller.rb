@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user = current_user
     if @product.save
-      redirect_to products_path(@product) #ver no rails routes para onde direcionar
+      redirect_to products_path(@product)
     else
       render :new, status: :unprocessable_entity
     end
