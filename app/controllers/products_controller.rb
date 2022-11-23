@@ -51,8 +51,9 @@ class ProductsController < ApplicationController
 
   def destroy
     authorize @product # pundit authorization to owner (see policy)
+    # raise
     @product.destroy
-    redirect_to product_path, status: :see_other
+    redirect_to products_path, status: :see_other
   end
 
   private

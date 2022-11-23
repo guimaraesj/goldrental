@@ -1,7 +1,7 @@
-<%= simple_form_for [@product] do |f| %>
+<%= simple_form_for [@product , @rent] do |f| %>
   <%= f.input :total_value %>
   <%= f.input :duration %>
   <%= f.input :approval_state %>
   <%= f.input :credit_card %>
-  <%= f.submit "New rent", class: "btn btn-primary" %>
+  <%= f.submit "Save New rent", class: "btn btn-primary" %>
 <% end %>
