@@ -15,7 +15,8 @@ User.destroy_all
     last_name: Faker::Name.last_name,
     description: Faker::Superhero.descriptor,
     email: Faker::Internet.safe_email,
-    password: rand(654_564_612..987_984_784_894)
+    password: rand(654_564_612..987_984_784_894),
+    admin: false
   )
   new_user.save!
   p "Created succefully"
@@ -45,7 +46,7 @@ end
     duration: rand(50..1000),
     total_value: rand(50..10_000),
     credit_card: Faker::Finance.credit_card(:mastercard),
-    approval_state: [true, false].sample
+    approval_state: ["Pending", "Approved", "Declined"].sample
   )
   new_rent.save!
   p "Created succefully"
