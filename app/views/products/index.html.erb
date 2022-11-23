@@ -1,23 +1,14 @@
 <h1>Products List</h1>
-<ul>
+
   <% @products.each do |product| %>
-    <li><%= link_to product.name, product_path(product) %></li>
+  <div class="col-12 col-sm-6 col-md-4 mb-3">
+    <%= link_to product_path(product), class: "text-decoration-none" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=image_cloudinary(product)%>)">
+      <%# o image_cloudinary está no helpers/lists_helper para poder ser chamado em vários forms %>
+      <%= product.name %>
+      </div>
+    <% end %>
+  </div>
   <% end %>
-</ul>
-
-<div class="cards">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dj3nqzpwh/image/upload/v1669207227/iyez9rheoq2090maci9s.png)">
-    Product 1
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dj3nqzpwh/image/upload/v1669207227/iyez9rheoq2090maci9s.png)">
-    Product 2
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dj3nqzpwh/image/upload/v1669207227/iyez9rheoq2090maci9s.png)">
-    Product 3
-  </div>
-</div>
 
 <%= link_to "New Product", new_product_path %>
-
