@@ -38,13 +38,14 @@ end
   new_product.save!
   p "Created product"
 
-    new_rent = Rent.new(
-      user: User.all.sample,
-      product: new_product,
-      duration: rand(50..1000),
-      total_value: rand(50..10_000),
-      credit_card: Faker::Finance.credit_card(:mastercard),
-      approval_state: ["Pending", "Approved", "declined"].sample
-    )
-    new_rent.save!
-    p "Created new rent"
+  new_rent = Rent.new(
+    user: User.all.sample,
+    product: new_product,
+    duration: rand(50..1000),
+    total_value: rand(50..10_000),
+    credit_card: Faker::Finance.credit_card(:mastercard),
+    approval_state: ["Pending", "Approved", "declined"].sample
+  )
+  new_rent.save!
+  p "Created new rent"
+end
