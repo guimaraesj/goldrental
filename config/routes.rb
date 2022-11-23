@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :products do
-    resources :rentals, only: %i[new create edit update]
+    resources :rents, only: %i[show new create edit update]
   end
-  resources :rentals, only: %i[index destroy] do
+  resources :rents, only: %i[index destroy] do
     resources :reviews, only: %i[new create]
     # falta validar todas as rotas
   end
