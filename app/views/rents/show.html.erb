@@ -2,3 +2,10 @@
 <p><%= @rent.duration %></p>
 <p><%= @rent.approval_state %></p>
 <p><%= @rent.credit_card %></p>
+
+<%= link_to "Home", rents_path %>
+<%= link_to "Create",   product_rents_path %>
+<%= link_to "Delete",
+  rent_path(@rent),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
