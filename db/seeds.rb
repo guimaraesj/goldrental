@@ -36,18 +36,15 @@ end
     state: Faker::Address.state
   )
   new_product.save!
-  p "Created succefully"
-end
+  p "Created product"
 
-20.times do
-  new_rent = Rent.new(
-    user: User.all.sample,
-    product: Product.all.sample,
-    duration: rand(50..1000),
-    total_value: rand(50..10_000),
-    credit_card: Faker::Finance.credit_card(:mastercard),
-    approval_state: ["Pending", "Approved", "Declined"].sample
-  )
-  new_rent.save!
-  p "Created succefully"
-end
+    new_rent = Rent.new(
+      user: User.all.sample,
+      product: new_product,
+      duration: rand(50..1000),
+      total_value: rand(50..10_000),
+      credit_card: Faker::Finance.credit_card(:mastercard),
+      approval_state: ["Pending", "Approved", "declined"].sample
+    )
+    new_rent.save!
+    p "Created new rent"

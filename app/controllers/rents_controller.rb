@@ -30,6 +30,7 @@ class RentsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:product_id])
     authorize @rent # pundit authorization to what is defined in rents policy
   end
 
@@ -42,6 +43,20 @@ class RentsController < ApplicationController
     @rent = Rent.find(params[:id])
     @rent.destroy
     redirect_to rents_path, status: :see_other
+  end
+
+  def update
+    # @product.update(product_params)
+    # redirect_to product_path(@product)
+    # @product = Product.find(params[:product_id])
+    @rent.update(rent_params)
+    @rent.product = @product
+    redirect_to rents_path(@rent)
+    # if @rent.update(rent_params)
+    #   redirect_to rents_path(@rent)
+    # else
+    #   render :new, status: :unprocessable_entity
+    # end
   end
 
   private
