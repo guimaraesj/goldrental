@@ -1,13 +1,14 @@
 <h1>New Product</h1>
 <%= simple_form_for [@product] do |f| %>
-  <%= f.input :name %>
+  <%= f.input :name, label: 'Insert a name for your product' %>
   <%= f.input :description %>
   <%= f.input :min_rent_duration %>
-  <%= f.input :weight %>
+  <%= f.input :weight, label: 'Weight (g)' %>
   <%= f.input :material %>
-  <%= f.input :product_price %>
-  <%= f.input :rent_cost %>
+  <%= f.input :product_price, label: 'Estimated Price (€)' %>
+  <%= f.input :rent_cost, label: 'Price/day (€)' %>
   <%= f.input :city %>
   <%= f.input :state %>
   <%= f.submit "Save New Product", class: "btn btn-primary" %>
+  <%= link_to "Back to products", products_path %>
 <% end %>
