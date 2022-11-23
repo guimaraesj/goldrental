@@ -44,7 +44,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    #raise
     @product.destroy
     redirect_to products_path, status: :see_other
   end

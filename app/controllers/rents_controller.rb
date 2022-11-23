@@ -3,10 +3,10 @@ class RentsController < ApplicationController
 
   def index
     @rents = Rent.where(user: current_user)
+    # @rents = Rent.all
   end
 
   def show
-    @rent = Rent.find(params[:id])
   end
 
   def new
@@ -26,8 +26,26 @@ class RentsController < ApplicationController
     end
   end
 
-  def destroy
+  def edit
+    @product = Product.find(params[:product_id])
     @rent = Rent.find(params[:id])
+  end
+
+  def update
+    # @product.update(product_params)
+    # redirect_to product_path(@product)
+    # @product = Product.find(params[:product_id])
+    @rent.update(rent_params)
+    @rent.product = @product
+    redirect_to rents_path(@rent)
+    # if @rent.update(rent_params)
+    #   redirect_to rents_path(@rent)
+    # else
+    #   render :new, status: :unprocessable_entity
+    # end
+  end
+
+  def destroy
     @rent.destroy
     redirect_to rents_path, status: :see_other
   end
