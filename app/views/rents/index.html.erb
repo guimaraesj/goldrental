@@ -1,5 +1,8 @@
+<h1>Rents List</h1>
 <ul>
   <% @rents.each do |rent| %>
     <li><%= link_to rent.id, product_rent_path(rent.product, rent) %></li>
   <% end %>
 </ul>
+
+<%= link_to "Products", products_path %>

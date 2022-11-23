@@ -1,8 +1,10 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
   before_action :set_product, only: %i[show edit update destroy]
+
   def index
-    @products = Product.all
+    # @products = Product.all -
+    @products = policy_scope(Product) # to allow for later show of the owner products page.
 
     ## CODE BELOW IS TO BE IMPLEMENTED to replace above line. Need to change product schema to add these dates.
     # user_start_date = params[:start_date]
@@ -15,16 +17,17 @@ class ProductsController < ApplicationController
     # conflicting_bookings = Rent.where("#{sc_1} OR #{sc_2} OR #{sc_3}, params[user_end_date, user_start_date, user_end_date, user_start_date ]")
     # occuped_products = conflicting_bookings.map { |rent| rent.product }
     # @products = Product.all - occuped_products
-    #link to
   end
 
   def new
     @product = Product.new
+    authorize @product # pundit authorization to anyone
   end
 
   def create
     @product = Product.new(product_params)
     @product.user = current_user
+    authorize @product # pundit authorization to anyone
     if @product.save
       redirect_to products_path(@product)
     else
@@ -33,18 +36,21 @@ class ProductsController < ApplicationController
   end
 
   def show
+    authorize @product # pundit authorization to anyone
   end
 
   def edit
+    authorize @product # pundit authorization to owner (see policy)
   end
 
   def update
+    authorize @product # pundit authorization to owner (see policy)
     @product.update(product_params)
     redirect_to product_path(@product)
   end
 
   def destroy
-    # raise
+    authorize @product # pundit authorization to owner (see policy)
     @product.destroy
     redirect_to products_path, status: :see_other
   end
