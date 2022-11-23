@@ -1,5 +1,6 @@
 class RentsController < ApplicationController
-  before_action :set_rent, only: %i[new create]
+  before_action :set_rent, only: %i[show edit update destroy]
+
   def index
     @rents = Rent.where(user: current_user)
   end
@@ -9,12 +10,15 @@ class RentsController < ApplicationController
   end
 
   def new
+    @product = Product.find(params[:product_id])
     @rent = Rent.new
   end
 
   def create
+    @product = Product.find(params[:product_id])
     @rent = Rent.new(rent_params)
     @rent.user = current_user
+    @rent.product = @product
     if @rent.save
       redirect_to rents_path(@rent)
     else
