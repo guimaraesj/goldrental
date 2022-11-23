@@ -2,7 +2,7 @@
 <%= simple_form_for [@product] do |f| %>
   <%= f.input :name, label: 'Insert a name for your product' %>
   <%= f.input :description %>
-  <%= f.input :min_rent_duration %>
+  <%= f.input :min_rent_duration, label: 'Days' %>  <%#= validate this as integer %>
   <%= f.input :weight, label: 'Weight (g)' %>
   <%= f.input :material %>
   <%= f.input :product_price, label: 'Estimated Price (€)' %>
