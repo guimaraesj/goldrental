@@ -9,6 +9,7 @@
   <%= f.input :rent_cost, label: 'Price/day (€)' %>
   <%= f.input :city %>
   <%= f.input :state %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit "Save New Product", class: "btn btn-primary" %>
   <%= link_to "Back to products", products_path %>
 <% end %>
