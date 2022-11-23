@@ -1,9 +1,4 @@
 <h1>Products List</h1>
-<ul>
-  <% @products.each do |product| %>
-    <li><%= link_to product.name, product_path(product) %></li>
-  <% end %>
-</ul>
 
 <div class="cards">
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dj3nqzpwh/image/upload/v1669207227/iyez9rheoq2090maci9s.png)">
@@ -43,14 +38,8 @@
   </div>
 </div>
 
-<<<<<<< HEAD
 <ul>
   <% @products.each do |product| %>
     <li><%= link_to product.name, product_path(product) %></li>
   <% end %>
 </ul>
-=======
-<%= link_to "New Product", new_product_path %>
-<%= link_to "Rents", rents_path %>
-
->>>>>>> 43377963f98e7f4914d96ea23b212d70d3a5c848
