@@ -1,4 +1,19 @@
-<h1>Product</h1>
+
+<%# <%= image_path @product.photo.key %> <%# imagem de cada product %>
+<%# <%= image_tag @product.photo.key, alt: bookmark.movie.title, class: "movie-img rounded-top" %>
+<%# comment for push %>
+
+<%= link_to "Home", products_path %>
+
+<% if policy(@product).edit? %>
+  <%= link_to "Edit this product", edit_product_path %> |
+<% end %>
+
+
+<div class="card-product">
+  <%= image_cloudinary_tag(@product) %>
+  <div class="card-product-infos">
+    <h1>Product</h1>
 <p><%= @product.name %></p>
 <p><%= @product.description %></p>
 <p><%= @product.min_rent_duration %></p>
@@ -8,15 +23,10 @@
 <p><%= @product.rent_cost %></p>
 <p><%= @product.city %></p>
 <p><%= @product.state %></p>
-<img src="<%= cl_image_path @product.photo.key, height: 300, crop: :fill %>" />
-<%# <%= image_path @product.photo.key %> <%# imagem de cada product %>
-<%# <%= image_tag @product.photo.key, alt: bookmark.movie.title, class: "movie-img rounded-top" %>
+  </div>
+</div>
 
-<%= link_to "Home", products_path %>
 
-<% if policy(@product).edit? %>
-  <%= link_to "Edit this product", edit_product_path %> |
-<% end %>
 
 <%= link_to "Delete this product", product_path(@product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@product).destroy?%>
 <%= link_to "Back to products", products_path %>
