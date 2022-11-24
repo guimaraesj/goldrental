@@ -1,13 +1,15 @@
-<h1>Edit Product</h1>
-<%= simple_form_for(@product) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :min_rent_duration %>
-  <%= f.input :material %>
-  <%= f.input :rent_cost %>
-  <%= f.input :city %>
-  <%= f.input :state %>
-  <%= f.submit %>
-<% end %>
+<div class="container p-0">
+  <h1>Edit Product</h1>
+  <%= simple_form_for(@product) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :min_rent_duration %>
+    <%= f.input :material %>
+    <%= f.input :rent_cost %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.submit"Update Product", class: "btn btn-primary"%>
+    <%= link_to "Back", product_path, class: "btn btn-flat" %>
+  <% end %>
 
-<%= link_to "Back", product_path %>
+</div>
