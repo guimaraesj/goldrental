@@ -26,8 +26,6 @@
   </div>
 </div>
 
-
-
 <%= link_to "Delete this product", product_path(@product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@product).destroy?%>
 <%= link_to "Back to products", products_path %>
 <%= link_to "Book new rent", new_product_rent_path(@product) %>
