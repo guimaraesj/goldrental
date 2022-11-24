@@ -8,7 +8,7 @@
 <p><%= @product.rent_cost %></p>
 <p><%= @product.city %></p>
 <p><%= @product.state %></p>
-<img src="<%= cl_image_path @product.photo.key, height: 300, crop: :fill %>" />
+<%= image_cloudinary_tag(@product) %>
 <%# <%= image_path @product.photo.key %> <%# imagem de cada product %>
 <%# <%= image_tag @product.photo.key, alt: bookmark.movie.title, class: "movie-img rounded-top" %>
 
@@ -17,6 +17,17 @@
 <% if policy(@product).edit? %>
   <%= link_to "Edit this product", edit_product_path %> |
 <% end %>
+
+
+<div class="card-product">
+  <img src="https://m.media-amazon.com/images/I/61YbersTnYL.__AC_SX300_SY300_QL70_FMwebp_.jpg" />
+  <div class="card-product-infos">
+    <h2>Title</h2>
+    <p>escription</p>
+  </div>
+</div>
+
+
 
 <%= link_to "Delete this product", product_path(@product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@product).destroy?%>
 <%= link_to "Back to products", products_path %>
