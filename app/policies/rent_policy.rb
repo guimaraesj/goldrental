@@ -8,7 +8,7 @@ class RentPolicy < ApplicationPolicy
   end
 
   def show?
-    record.user == user 
+    user.admin? ? scope.all : record.user == user
   end
 
   def create?
@@ -16,12 +16,12 @@ class RentPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    user.admin? ? scope.all : record.user == user
     # record: the rents passed to the `authorize` method in controller
     # user: the `current_user` signed in with Devise
   end
 
   def destroy?
-    record.user == user
+    user.admin? ? scope.all : record.user == user
   end
 end
