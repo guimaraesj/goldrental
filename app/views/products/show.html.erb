@@ -14,11 +14,11 @@
     <p><strong>City: </strong><%= @product.city %></p>
     <p><strong>State: </strong><%= @product.state %></p>
   </div>
-  <% if policy(@product).edit? %>
-    <%= link_to "Edit this product", edit_product_path, class: "btn btn-flat" %>
-    <%= link_to "Delete this product", product_path(@product), class: "btn btn-flat", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@product).destroy?%>
-  <% end %>
 </div>
 
 <%= link_to "Back to products", products_path,  class: "btn btn-flat" %>
 <%= link_to "Rent now", new_product_rent_path(@product), class: "btn btn-flat" %>
+<% if policy(@product).edit? %>
+    <%= link_to "Edit this product", edit_product_path, class: "btn btn-flat" %>
+    <%= link_to "Delete this product", product_path(@product), class: "btn btn-flat", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@product).destroy?%>
+  <% end %>
