@@ -8,7 +8,7 @@ class RentPolicy < ApplicationPolicy
   end
 
   def show?
-    record.user == user
+    record.user == user 
   end
 
   def create?
