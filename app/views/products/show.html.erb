@@ -1,14 +1,4 @@
-<h1>Product</h1>
-<p><%= @product.name %></p>
-<p><%= @product.description %></p>
-<p><%= @product.min_rent_duration %></p>
-<p><%= @product.weight %></p>
-<p><%= @product.material %></p>
-<p><%= @product.product_price %></p>
-<p><%= @product.rent_cost %></p>
-<p><%= @product.city %></p>
-<p><%= @product.state %></p>
-<%= image_cloudinary_tag(@product) %>
+
 <%# <%= image_path @product.photo.key %> <%# imagem de cada product %>
 <%# <%= image_tag @product.photo.key, alt: bookmark.movie.title, class: "movie-img rounded-top" %>
 
@@ -20,10 +10,18 @@
 
 
 <div class="card-product">
-  <img src="https://m.media-amazon.com/images/I/61YbersTnYL.__AC_SX300_SY300_QL70_FMwebp_.jpg" />
+  <%= image_cloudinary_tag(@product) %>
   <div class="card-product-infos">
-    <h2>Title</h2>
-    <p>escription</p>
+    <h1>Product</h1>
+<p><%= @product.name %></p>
+<p><%= @product.description %></p>
+<p><%= @product.min_rent_duration %></p>
+<p><%= @product.weight %></p>
+<p><%= @product.material %></p>
+<p><%= @product.product_price %></p>
+<p><%= @product.rent_cost %></p>
+<p><%= @product.city %></p>
+<p><%= @product.state %></p>
   </div>
 </div>
 
