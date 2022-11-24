@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_23_152719) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_120340) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_152719) do
     t.string "credit_card"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "approval_state", default: "Pending"
+    t.string "approval_state", default: "None"
     t.index ["product_id"], name: "index_rents_on_product_id"
     t.index ["user_id"], name: "index_rents_on_user_id"
   end

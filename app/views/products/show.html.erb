@@ -1,23 +1,25 @@
 <h1>Product</h1>
-<p><%= @product.name %></p>
-<p><%= @product.description %></p>
-<p><%= @product.min_rent_duration %></p>
-<p><%= @product.weight %></p>
-<p><%= @product.material %></p>
-<p><%= @product.product_price %></p>
-<p><%= @product.rent_cost %></p>
-<p><%= @product.city %></p>
-<p><%= @product.state %></p>
-<img src="<%= cl_image_path @product.photo.key, height: 300, crop: :fill %>" />
+<p><strong>Product Name: </strong><%= @product.name %></p>
+<p><strong>Description: </strong><%= @product.description %></p>
+<p><strong>Minimal Rent Durantion: </strong><%= @product.min_rent_duration %> Day/s</p>
+<% if @product.weight.present? %>
+  <p><strong>Weight: </strong><%= @product.weight %> g</p>
+<% end %>
+<p><strong>Material: </strong><%= @product.material %></p>
+<p><strong>Product Price: </strong><%= '%.2f' % @product.product_price %> €</p>
+<p><strong>Rent Cost: </strong><%= '%.2f' % @product.rent_cost %> €</p>
+<p><strong>City: </strong><%= @product.city %></p>
+<p><strong>State: </strong><%= @product.state %></p>
+<%= image_cloudinary_tag(@product) %>
 <%# <%= image_path @product.photo.key %> <%# imagem de cada product %>
 <%# <%= image_tag @product.photo.key, alt: bookmark.movie.title, class: "movie-img rounded-top" %>
 
-<%= link_to "Home", products_path %>
+<%= link_to "Home", products_path, class: "btn btn-flat" %>
 
 <% if policy(@product).edit? %>
-  <%= link_to "Edit this product", edit_product_path %> |
+  <%= link_to "Edit this product", edit_product_path, class: "btn btn-flat" %>
 <% end %>
 
-<%= link_to "Delete this product", product_path(@product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@product).destroy?%>
-<%= link_to "Back to products", products_path %>
-<%= link_to "Book new rent", new_product_rent_path(@product) %>
+<%= link_to "Delete this product", product_path(@product), class: "btn btn-flat", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@product).destroy?%>
+<%= link_to "Back to products", products_path,  class: "btn btn-flat" %>
+<%= link_to "Book new rent", new_product_rent_path(@product), class: "btn btn-flat" %>

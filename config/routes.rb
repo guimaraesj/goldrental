@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   end
   resources :rents, only: %i[index destroy] do
     resources :reviews, only: %i[new create]
-    # falta validar todas as rotas
+    member do
+      patch :approved
+      patch :declined
+    end
   end
 end
