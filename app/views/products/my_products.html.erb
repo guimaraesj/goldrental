@@ -1,0 +1,14 @@
+<h1>My Products</h1>
+<%= link_to "New Product", new_product_path, class: "btn btn-flat" %>
+<div class="container-index">
+  <% @products.each do |product| %>
+  <div class="">
+    <%= link_to product_path(product), class: "text-decoration-none" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=image_cloudinary(product)%>)">
+      <%# o image_cloudinary está no helpers/lists_helper para poder ser chamado em vários forms %>
+      <%= product.name %>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
