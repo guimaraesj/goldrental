@@ -13,7 +13,13 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-
+.container-index{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 
 
