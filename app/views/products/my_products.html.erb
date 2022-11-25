@@ -2,29 +2,22 @@
 <%= link_to "New Product", new_product_path, class: "btn btn-flat" %>
 <div class="container-index">
   <% @products.each do |product| %>
-  <div class="">
+    <div class="">
     <%= link_to product_path(product), class: "text-decoration-none" do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=image_cloudinary(product)%>)">
-      <%# o image_cloudinary está no helpers/lists_helper para poder ser chamado em vários forms %>
-      <%= product.name %>
-      </div>
-    <% end %>
-  </div>
-  <% end %>
-
-  <div class="product-card">
-
-  <h1>My Rent Requests</h1>
-    <% @products.each do |product| %>
-    <p>You have: <%= product.rents.count %> rents</p>
-      <% product.rents.each do |rent| %>
-        <% if rent.approval_state == "None" %>
-          New request by <%= rent.user.first_name %>
-          <%= rent.total_value %>
-          <%= link_to "Approve", approved_rent_path(rent), data: { turbo_method: :patch }, class: "btn btn-flat" %>
-          <%= link_to "Decline", declined_rent_path(rent), data: { turbo_method: :patch }, class: "btn btn-flat" %>
-  </div>
-        <% end %>
+      <div class="card-category border" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=image_cloudinary(product)%>)">
+        <%# o image_cloudinary está no helpers/lists_helper para poder ser chamado em vários forms %>
+        <%= product.name %>
       <% end %>
+      </div>
+      <h1>My Rent Requests</h1>
+      <p>You have: <%= product.rents.count %> rents</p>
+        <% product.rents.each do |rent| %>
+          <% if rent.approval_state == "None" %>
+            New request by <%= rent.user.first_name %>
+            <%= rent.total_value %>
+            <%= link_to "Approve", approved_rent_path(rent), data: { turbo_method: :patch }, class: "btn btn-flat" %>
+            <%= link_to "Decline", declined_rent_path(rent), data: { turbo_method: :patch }, class: "btn btn-flat" %>
+          <% end %>
+        <% end %>
     <% end %>
 </div>
