@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :products do
     resources :rents, only: %i[show new create edit update]
+    collection do
+      get :my
+    end
   end
   resources :rents, only: %i[index destroy] do
     resources :reviews, only: %i[new create]
