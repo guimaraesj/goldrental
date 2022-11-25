@@ -1,7 +1,11 @@
 <h1>Rents List</h1>
 <ul>
   <% @rents.each do |rent| %>
-    <li><%= link_to rent.id, product_rent_path(rent.product, rent) %></li>
+    <% if policy(rent).show? %>
+      <li><%= link_to rent.product.name , product_rent_path(rent.product, rent) %> request by
+       <%= rent.user.first_name %>
+       <%= rent.user.last_name %>
+       </li>
+    <% end %>
   <% end %>
 </ul>
-

@@ -17,7 +17,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? ? scope.all : record.user == user
+    record.user == user
     # record: the product passed to the `authorize` method in controller
     # user: the `current_user` signed in with Devise
   end
