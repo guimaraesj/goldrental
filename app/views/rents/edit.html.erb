@@ -1,19 +1,11 @@
-<h1>Edit Rent</h1>
-<%= simple_form_for([@product, @rent]) do |f| %>
-  <%= f.input :total_value %>
-  <%= f.input :duration %>
-  <%= f.input :credit_card %>
-  <p><strong>Approval State:</p>
-
-  <%= f.submit %>
-<% end %>
-
-<%= link_to "Back", rents_path %>
-
-
- <%# <select class="custom-select">
+<div class="container p-0">
+  <h1>Edit Rent</h1>
+  <%= simple_form_for([@product, @rent]) do |f| %>
+    <%= f.input :total_value %>
+    <%= f.input :duration %>
+    <%= f.input :credit_card %>
     <p><strong>Approval State:</p>
-    <%# <option selected><%= @rent.approval_state </option> %>
-    <%# <option value="1">Approved</option>
-    <option value="2">Declined</option>
-  </select> %>
+    <%= link_to "Back", rents_path, class: "btn btn-flat"%>
+    <%= f.submit "Update Product", class: "btn btn-primary" %>
+  <% end %>
+</div>
