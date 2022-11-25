@@ -24,4 +24,12 @@ class RentPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def approved?
+    record.product.user == user
+  end
+
+  def declined?
+    record.product.user == user
+  end
 end

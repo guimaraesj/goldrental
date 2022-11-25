@@ -48,6 +48,13 @@ class RentsController < ApplicationController
     redirect_to rents_path, status: :see_other
   end
 
+  def approved
+    @rent = Rent.find(params[:id])
+    @rent.approval_state = "approved"
+    authorize @rent
+    redirect_to product_path(@rent.product) if @rent.save
+  end
+
   private
 
   def rent_params

@@ -20,7 +20,7 @@
         <div class="card-product-infos border border-2 col">
           <h2>Rent Details</h2>
           <p><strong>Rent Duration: </strong><%= @rent.duration %> Days</p>
-          <p><strong>Total Value: </strong><%= '%.2f' % @rent.total_value %>€</p>
+          <p><strong>Total Value: </strong><%= '%.2f' % (@rent.duration.to_i * @rent.product.rent_cost) %>€</p>
         </div>
         <div class="card-product-infos border border-2 col">
           <h2>Rent Approval State</h2>
@@ -36,8 +36,4 @@
       rent_path(@rent), class: "btn btn-flat",
       data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
       %>
-    <% elsif @rent.product.user == current_user %>
-      <%= link_to "Approve", approved_rent_path, class: "btn btn-flat" %>
-      <%= link_to "Decline", declined_rent_path, class: "btn btn-flat" %>
-    <% end %>
   </div>

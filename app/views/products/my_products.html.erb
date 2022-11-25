@@ -11,4 +11,20 @@
     <% end %>
   </div>
   <% end %>
+
+  <div class="product-card">
+
+  <h1>My Rent Requests</h1>
+    <% @products.each do |product| %>
+    <p>You have: <%= product.rents.count %> rents</p>
+      <% product.rents.each do |rent| %>
+        <% if rent.approval_state == "None" %>
+          New request by <%= rent.user.first_name %>
+          <%= rent.total_value %>
+          <%= link_to "Approve", approved_rent_path(rent), data: { turbo_method: :patch }, class: "btn btn-flat" %>
+          <%= link_to "Decline", declined_rent_path(rent), data: { turbo_method: :patch }, class: "btn btn-flat" %>
+  </div>
+        <% end %>
+      <% end %>
+    <% end %>
 </div>
