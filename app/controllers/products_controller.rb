@@ -2,6 +2,10 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
   before_action :set_product, only: %i[show edit update destroy]
 
+  # Pundit: allow-list approach
+  after_action :verify_authorized, except: %i[index my_products], unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: %i[index my_products], unless: :skip_pundit?
+
   def index
     # @products = Product.all -
     @products = policy_scope(Product) # to allow for later show of the owner products page.
@@ -17,6 +21,11 @@ class ProductsController < ApplicationController
     # conflicting_bookings = Rent.where("#{sc_1} OR #{sc_2} OR #{sc_3}, params[user_end_date, user_start_date, user_end_date, user_start_date ]")
     # occuped_products = conflicting_bookings.map { |rent| rent.product }
     # @products = Product.all - occuped_products
+  end
+
+  def my_products
+    @products = policy_scope(Product)
+    # redirect_to my_products_products_path, status: :see_other
   end
 
   def new
@@ -54,6 +63,7 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to products_path, status: :see_other
   end
+
 
   private
 
