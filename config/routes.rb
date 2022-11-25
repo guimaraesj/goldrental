@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :products do
     resources :rents, only: %i[show new create edit update]
+    collection do
+      get :my_products # path for my products. no id required for my products since I have current_user logged in
+    end
   end
   resources :rents, only: %i[index destroy] do
     resources :reviews, only: %i[new create]
