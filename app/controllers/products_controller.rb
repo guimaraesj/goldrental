@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
   end
 
   def my_products
-    @products = policy_scope(Product)
+    @products = policy_scope(Product).where(user: current_user)
     # redirect_to my_products_products_path, status: :see_other
   end
 
