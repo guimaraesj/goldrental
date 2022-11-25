@@ -3,11 +3,11 @@
   <%= simple_form_for [@product] do |f| %>
     <%= f.input :name, label: 'Insert a name for your product' %>
     <%= f.input :description %>
-    <%= f.input :min_rent_duration, label: 'Days' %>  <%#= validate this as integer %>
     <%= f.input :weight, label: 'Weight (g)' %>
     <%= f.input :material %>
-    <%= f.input :product_price, label: 'Estimated Price (€)' %>
-    <%= f.input :rent_cost, label: 'Price/day (€)' %>
+    <%= f.input :product_price, label: 'Estimated Value: (€)' %>
+    <%= f.input :rent_cost, label: 'Cost/day (€)' %>
+    <%= f.input :min_rent_duration, label: 'Days' %>  <%#= validate this as integer %>
     <%= f.input :city %>
     <%= f.input :state %>
     <%= f.input :photo, as: :file %>
