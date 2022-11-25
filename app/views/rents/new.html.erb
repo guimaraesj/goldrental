@@ -1,9 +1,8 @@
 <div class="container p-0">
 <h1>New Rent</h1>
 <%= simple_form_for [@product , @rent] do |f| %>
-  <%= f.input :total_value %>
-  <%= f.input :duration %>
-  <%= f.input :credit_card %>
+  <%= durat = f.input :duration, label: 'Rent duration (days):' %>
+  <%= f.input :credit_card, label: 'Credit card number:' %>
   <%= f.submit "Save New rent", class: "btn btn-primary" %>
   <%= link_to "Back", rents_path, class: "btn btn-flat"%>
 <% end %>

@@ -1,10 +1,10 @@
 <div class="container p-0">
   <h1>Edit Rent</h1>
   <%= simple_form_for([@product, @rent]) do |f| %>
-    <%= f.input :total_value %>
-    <%= f.input :duration %>
-    <%= f.input :credit_card %>
-    <p><strong>Approval State:</p>
+    <%= f.input :duration, label: 'Rent duration (days):' %>
+    <%= f.input :credit_card, label: 'Credit card number:' %>
+  <br>
+    <p><strong>Approval State: </strong><%= @rent.approval_state %></p>
     <%= link_to "Back", rents_path, class: "btn btn-flat"%>
     <%= f.submit "Update Product", class: "btn btn-primary" %>
   <% end %>
