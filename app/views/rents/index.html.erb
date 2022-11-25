@@ -1,11 +1,17 @@
-<h1>Rents</h1>
+<h1>My Rents</h1>
 <ul>
   <% @rents.each do |rent| %>
     <% if policy(rent).show? %>
-      <%= image_cloudinary_tag(rent.product)%>
-      <%= link_to rent.product.name , product_rent_path(rent.product, rent), class: "article_rent" %> request by
-       <%= rent.user.first_name %>
-       <%= rent.user.last_name %>
+      <div class="card-rent">
+        <div class="avatar-index avatar-large">
+          <%= image_cloudinary_tag(rent.product)%>
+        </div>
+        <div class="">
+          <%= link_to rent.product.name , product_rent_path(rent.product, rent), class: "article_rent" %> requested by
+          <%= rent.user.first_name %>
+          <%= rent.user.last_name %>
+        </div>
+      </div>
     <% end %>
   <% end %>
 </ul>

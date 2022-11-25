@@ -7,6 +7,14 @@
   align-items: center;
 }
 
+.card-rent {
+  display: flex;
+  align-items: center;
+  background: white;
+  height: 125px;
+  border-radius: 30px;
+}
+
 .avatar {
   overflow: hidden;
   height: 25px;

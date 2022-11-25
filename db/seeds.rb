@@ -70,7 +70,7 @@ product = Product.new(
   city: "Matosinhos",
   state: "Porto"
 )
-file = URI.open("https://res.cloudinary.com/dj3nqzpwh/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1669284146/h3axbah0jdfl3yhahs7o.jpg")
+file = URI.open("https://res.cloudinary.com/dj3nqzpwh/image/upload/v1669284146/h3axbah0jdfl3yhahs7o.jpg")
 product.photo.attach(io: file, filename: "h3axbah0jdfl3yhahs7o.jpg", content_type: "image/jpg")
 product.save
 
@@ -95,7 +95,7 @@ product = Product.new(
   description: "Wedding Necklace",
   min_rent_duration: 1,
   weight: 100,
-  material: "gold", # %w[gold silver platinum],
+  material: "platinum", # %w[gold silver platinum],
   product_price: 100_000,
   rent_cost: 500,
   user: User.find_by(first_name: 'Manuela'),
@@ -123,6 +123,15 @@ rent = Rent.create(
   duration: 7,
   credit_card: "7841 4451 1544 3254",
   approval_state: "Approved"
+)
+rent.total_value = rent.duration * rent.product.rent_cost
+
+rent = Rent.create(
+  user: User.find_by(first_name: 'Jorge'),
+  product: Product.find_by(name: 'Rapper Chain'),
+  duration: 7,
+  credit_card: "7841 4451 1544 3244",
+  approval_state: "Pending"
 )
 rent.total_value = rent.duration * rent.product.rent_cost
 rent.save
