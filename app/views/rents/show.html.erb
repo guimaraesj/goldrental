@@ -1,29 +1,37 @@
-<h1>Product Rent</h1>
-<h5>Product Details</h5>
-<p><strong>Product Name: </strong><%= @rent.product.name %></p>
-<p><strong>Minimal Rent Durantion: </strong><%= @rent.product.min_rent_duration %> Day/s</p>
-<p><strong>Weight: </strong><%= @rent.product.weight %> g</p>
-<p><strong>Material: </strong><%= @rent.product.material %></p>
-<p><strong>Rent Price: </strong><%= '%.2f' % @rent.product.product_price %> €</p>
-<p><strong>Rent Cost: </strong><%= '%.2f' % @rent.product.rent_cost %> €</p>
-<p><strong>City: </strong><%= @rent.product.city %></p>
-<p><strong>State: </strong><%= @rent.product.state %></p>
-<h5>Rent Details</h5>
-<p><strong>Approval State: </strong><%= @rent.approval_state %></p>
-<p><strong>Credit Card Number: </strong><%= @rent.credit_card %></p>
-<p><strong>Total Value: </strong><%= '%.2f' % @rent.total_value %>€</p>
-<p><strong>Durantion: </strong><%= @rent.duration %> Days</p>
-
-<%= image_cloudinary_tag(@rent.product) %>
-
-<%= link_to "Back", rents_path, class: "btn btn-flat" %>
-<% if @rent.user == current_user%>
-<%= link_to "Edit", edit_product_rent_path, class: "btn btn-flat" %>
-<%= link_to "Cancel Rent",
-  rent_path(@rent), class: "btn btn-flat",
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
-<% elsif @rent.product.user == current_user %>
-<%= link_to "Approve", approved_rent_path, class: "btn btn-flat" %>
-<%= link_to "Decline", declined_rent_path, class: "btn btn-flat" %>
-<% end %>
+<div>
+  <div>
+    <h1>Product Rent</h1>
+  </div>
+  <div>
+  <h5>Product Details</h5>
+  </div>
+  <p><strong>Product Name: </strong><%= @rent.product.name %></p>
+  <p><strong>Minimal Rent Durantion: </strong><%= @rent.product.min_rent_duration %> Day/s</p>
+  <p><strong>Weight: </strong><%= @rent.product.weight %> g</p>
+  <p><strong>Material: </strong><%= @rent.product.material %></p>
+  <p><strong>Rent Price: </strong><%= '%.2f' % @rent.product.product_price %> €</p>
+  <p><strong>Rent Cost: </strong><%= '%.2f' % @rent.product.rent_cost %> €</p>
+  <p><strong>City: </strong><%= @rent.product.city %></p>
+  <p><strong>State: </strong><%= @rent.product.state %></p>
+  <h5>Rent Details</h5>
+  <p><strong>Approval State: </strong><%= @rent.approval_state %></p>
+  <p><strong>Credit Card Number: </strong><%= @rent.credit_card %></p>
+  <p><strong>Total Value: </strong><%= '%.2f' % @rent.total_value %>€</p>
+  <p><strong>Durantion: </strong><%= @rent.duration %> Days</p>
+</div>
+<div>
+  <%= image_cloudinary_tag(@rent.product) %>
+</div>
+<div>
+  <%= link_to "Back", rents_path, class: "btn btn-flat" %>
+  <% if @rent.user == current_user%>
+  <%= link_to "Edit", edit_product_rent_path, class: "btn btn-flat" %>
+  <%= link_to "Cancel Rent",
+    rent_path(@rent), class: "btn btn-flat",
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
+  <% elsif @rent.product.user == current_user %>
+  <%= link_to "Approve", approved_rent_path, class: "btn btn-flat" %>
+  <%= link_to "Decline", declined_rent_path, class: "btn btn-flat" %>
+  <% end %>
+</div>
