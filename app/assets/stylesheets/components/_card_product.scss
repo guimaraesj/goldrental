@@ -8,11 +8,14 @@
 }
 
 .card-product img {
-  height: 100%;
-  width: 100%;
-  margin-left: 10px;
+  height: 350px;
+  width: 350px;
+  margin-left: 32px;
+  margin-top: 25px;
   align-items: left;
   object-fit: cover;
+  border-radius: 50%;
+  justify-items: center;
 }
 
 .card-product h2 {
@@ -22,7 +25,7 @@
 }
 
 .card-product p {
-  font-size: 25px;
+  font-size: 15px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
